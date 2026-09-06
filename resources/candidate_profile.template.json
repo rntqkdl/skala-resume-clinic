@@ -1,0 +1,46 @@
+﻿{
+  "personal": {
+    "name": "홍길동",
+    "birth": "YYYY.MM.DD",
+    "phone": "010-XXXX-XXXX",
+    "email": "example@email.com",
+    "address": "서울특별시 강남구",
+    "military": "군필 (육군 병장 만기전역) / 해당없음",
+    "language": "어학성적 기재 (또는 어학 무관 직무 지원)"
+  },
+  "education": {
+    "university": "대학교명",
+    "major": "주전공",
+    "dual_major": "이중전공/부전공",
+    "status": "졸업 / 졸업예정",
+    "gpa": "3.5",
+    "max_gpa": "4.5"
+  },
+  "certifications": [
+    {
+      "name": "자격증명",
+      "issuer": "발급기관",
+      "status": "취득완료"
+    }
+  ],
+  "awards": [
+    {
+      "year": "YYYY.MM",
+      "name": "수상명",
+      "org": "주최/주관기관",
+      "project": "프로젝트명"
+    }
+  ],
+  "projects": {
+    "project_1": {
+      "name": "프로젝트명",
+      "period": "YYYY.MM ~ YYYY.MM",
+      "role": "역할 (인원수)",
+      "tech_stack": ["기술스택1", "기술스택2"],
+      "metrics": {
+        "dataset_size": "데이터 규모",
+        "performance": "주요 달성 지표 (%)"
+      }
+    }
+  }
+}

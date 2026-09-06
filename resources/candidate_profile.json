@@ -1,0 +1,139 @@
+{
+  "personal": {
+    "name": "안성민",
+    "birth": "2001.02.15",
+    "phone": "010-****-5134",
+    "email": "tjdals2299@gmail.com",
+    "address": "전북특별자치도 전주시 덕진구",
+    "military": "군필 (육군 병장 만기전역)",
+    "language": "어학성적 없음 (어학 무관 직무 지원)"
+  },
+  "education": {
+    "university": "전북대학교",
+    "major": "IT융합기전공학과",
+    "dual_major": "IAB융합전공",
+    "status": "졸업예정 (2019.03 ~ 2027.02)",
+    "gpa": "3.5",
+    "max_gpa": "4.5"
+  },
+  "certifications": [
+    {
+      "name": "AI-900 (Azure AI Fundamentals)",
+      "issuer": "Microsoft",
+      "status": "취득완료"
+    },
+    {
+      "name": "DP-900 (Azure Data Fundamentals)",
+      "issuer": "Microsoft",
+      "status": "취득완료"
+    },
+    {
+      "name": "ADsP (데이터분석 준전문가)",
+      "issuer": "한국데이터산업진흥원",
+      "status": "취득완료"
+    },
+    {
+      "name": "SQLD (SQL 개발자)",
+      "issuer": "한국데이터산업진흥원",
+      "status": "취득예정"
+    }
+  ],
+  "awards": [
+    {
+      "year": "2025.12",
+      "name": "SW 프로젝트 경진대회 대상 (정보통신기획평가원장상)",
+      "org": "고려대학교 지능정보 SW아카데미 / IITP",
+      "project": "EpiText"
+    },
+    {
+      "year": "2026.02",
+      "name": "DACON 피싱/스캠 예방 서비스 개발 경진대회 우수상",
+      "org": "데이콘 (DACON) / 데이터 유니버스",
+      "project": "Smishing Forecast"
+    },
+    {
+      "year": "2024.01",
+      "name": "AWS DeepRacer 챔피언십 우수상",
+      "org": "전북대학교 / AWS",
+      "project": "AWS DeepRacer 자율주행 강화학습 최적화"
+    },
+    {
+      "year": "2023.06",
+      "name": "캡스톤 디자인 경진대회 은상",
+      "org": "전북대학교 공과대학",
+      "project": "Safe Drain Lock (IoT 수영장 배수구 사고방지 시스템)"
+    },
+    {
+      "year": "2023.08",
+      "name": "모바일 앱 개발 해커톤 우수상",
+      "org": "전남대학교",
+      "project": "건설 일용직 구인구직 매칭 플랫폼"
+    }
+  ],
+  "projects": {
+    "epitext": {
+      "name": "EpiText: 딥러닝 멀티모달 기반 훼손 탁본 복원 및 문맥 해석 시스템",
+      "period": "2025.08 ~ 2025.12",
+      "role": "PM 및 Vision/데이터 전처리 엔지니어링 (4인)",
+      "tech_stack": [
+        "Python",
+        "PyTorch",
+        "Swin Transformer V2",
+        "SikuRoBERTa",
+        "Gemini API",
+        "OpenCV",
+        "EasyOCR",
+        "FastAPI"
+      ],
+      "metrics": {
+        "dataset_size": "원천 14,881개 이미지 중 9,970개 고품질 데이터셋 정제 구축",
+        "imbalance_ratio": "13,000종 한자 클래스, 최대 1:907 불균형 극복",
+        "top1_acc": "96.63%",
+        "top5_acc": "99.38%",
+        "f1_score": "82.4%"
+      }
+    },
+    "smishing": {
+      "name": "Smishing Forecast: 자가 진화형 스미싱 방어 AI 시스템",
+      "period": "2026.01 ~ 2026.02",
+      "role": "Data / NLP 파이프라인 개발 (4인)",
+      "tech_stack": [
+        "Python",
+        "RoBERTa",
+        "Google News RSS",
+        "Naver API",
+        "JSONL"
+      ],
+      "metrics": {
+        "f1_improvement": "0.67 → 0.95로 대폭 개선"
+      }
+    },
+    "n8n_agent": {
+      "name": "n8n 기반 개인화 취업 컨설팅 에이전트",
+      "period": "2026.01.13 ~ 2026.01.16",
+      "role": "팀장 및 자동화 워크플로우 설계·구현",
+      "tech_stack": [
+        "n8n",
+        "Apify",
+        "Azure OpenAI",
+        "Supabase Vector Store (Qdrant)",
+        "JavaScript"
+      ]
+    },
+    "safe_drain_lock": {
+      "name": "Safe Drain Lock: 수영장 배수구 끼임 사고 방지 자동 제어 시스템",
+      "period": "2023.03 ~ 2023.06",
+      "role": "임베디드 SW 개발 및 센서 데이터 분석 (5인)",
+      "tech_stack": [
+        "Arduino",
+        "Python",
+        "Flow Sensor",
+        "Solenoid Valve"
+      ],
+      "metrics": {
+        "threshold": "정상 유량(2,000L/h)과 이상 유량(0~380L/h) 분석으로 임계값 500L/h 도출",
+        "response_time": "이상 감지 시 0.1초 내 워터펌프 역회전 제어"
+      }
+    }
+  }
+}
