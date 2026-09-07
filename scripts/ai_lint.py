@@ -102,8 +102,8 @@ def lint_text(text, rules=None, categories=None):
                 print(f"       -> 권장 조치: {v['replacement']}")
 
     # 3. 서술어 능동성 분석
-    passive_endings = len(re.findall(r"되었습니다|이루어졌습니다|보여집니다|생각됩니다", text))
-    active_endings = len(re.findall(r"설계했습니다|구축했습니다|도출했습니다|단축했습니다|해결했습니다|최적화했습니다|입증했습니다", text))
+    passive_endings = len(re.findall(r"되었습니다|이루어졌습니다|보여집니다|생각됩니다|판단됩니다", text))
+    active_endings = len(re.findall(r"설계했습니다|구축했습니다|도출했습니다|단축했습니다|해결했습니다|최적화했습니다|입증했습니다|달성했습니다|구현했습니다|적용했습니다", text))
     total_verbs = active_endings + passive_endings
     active_ratio = (active_endings / total_verbs * 100) if total_verbs > 0 else 0
     

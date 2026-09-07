@@ -46,11 +46,18 @@ def verify_single_section(title, text, target_limit=800, target_company=None, mi
     start_idx = 0
     for idx, l in enumerate(lines):
         clean_l = l.lstrip("#").strip()
-        if clean_l.startswith("[") and "]" in clean_l:
+        if (clean_l.startswith("[") and "]" in clean_l) or l.strip().startswith("#AI"):
             start_idx = idx
             break
     candidate_lines = lines[start_idx:]
-    clean_lines = [l.strip() for l in candidate_lines if l.strip() and not l.startswith("#")]
+    clean_lines = []
+    for l in candidate_lines:
+        s = l.strip()
+        if not s or s == "---":
+            continue
+        # Strip markdown h2/h3/h4 prefix e.g. "### [소제목]" -> "[소제목]"
+        s_cleaned = re.sub(r"^#{2,4}\s+", "", s)
+        clean_lines.append(s_cleaned)
     pure_text = "\n".join(clean_lines)
     
     if not pure_text:
@@ -76,7 +83,9 @@ def verify_single_section(title, text, target_limit=800, target_company=None, mi
     has_generic_slogan_only = bool(re.search(r"디지털\s*혁신을\s*선도|스마트\s*팩토리를\s*이끄는|AX\s*혁신", pure_text)) and not bool(re.search(r"파이프라인|트래픽|이상치|시계열|FDS|인프라|아키텍처|지연|임계값|알고리즘", pure_text))
     company_check = True
     if target_company:
-        company_check = target_company in pure_text or target_company in title
+        is_company_question = any(k in title.lower() for k in ["지원동기", "why", "지원 동기", "입사", "회사", "company"])
+        if is_company_question:
+            company_check = target_company in pure_text or target_company in title
     gate2_pass = (not has_generic_slogan_only) and company_check
     print(f"2. Gate 2 [Company Replaceability (도메인 락인)]: {'[PASS]' if gate2_pass else '[FAIL]'}")
     if not gate2_pass:
@@ -93,7 +102,7 @@ def verify_single_section(title, text, target_limit=800, target_company=None, mi
         for p in percentages:
             idx = pure_text.find(p)
             window = pure_text[max(0, idx-50):min(len(pure_text), idx+60)]
-            has_pop = bool(re.search(r"대비|건|개|명|팀|장|종|L/h|ms|초|Baseline|F1|기존|모수|데이터셋|정확도|Top-|향상|달성|기록|오분류", window))
+            has_pop = bool(re.search(r"대비|건|개|명|팀|장|종|L/h|ms|초|분|시간|배|Baseline|F1|기존|모수|데이터셋|정확도|Top-|향상|달성|기록|오분류|단축|절감", window))
             if not has_pop:
                 missing_pop_details.append(p)
         if missing_pop_details:
@@ -173,7 +182,7 @@ if __name__ == "__main__":
     parser.add_argument("file", help="자소서 마크다운 파일 경로")
     parser.add_argument("limit", nargs="?", type=int, default=800, help="목표 글자 수 (기본: 800)")
     parser.add_argument("company", nargs="?", default=None, help="지원 기업명 (선택)")
-    parser.add_argument("--band", choices=["tight", "standard"], default="tight", help="글자 수 허용 밴드 (tight: 90~95%, standard: 85~95%)")
+    parser.add_argument("--band", choices=["tight", "standard"], default="tight", help="글자 수 허용 밴드 (tight: 90~95%%, standard: 85~95%%)")
     
     args = parser.parse_args()
     
