@@ -1,75 +1,147 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
-AI 생성 문체 및 번역투 검출 린터 (im-not-ai Korean Linter)
-- 70+ AI 클리셰, 번역투, 기계적 병렬 구조 탐지
-- 두괄식 및 소제목 공식 점검
+AI 생성 문체 및 번역투 검출 린터 (im-not-ai Powered Tech Resume Linter)
+- epoko77-ai/im-not-ai 10대 카테고리 기반 70개 서브 패턴 정밀 탐지
+- S1(치명적 감점), S2(경고) 심각도 분류 및 HEI(인간 엔지니어링 지수) 산출
+- 두괄식, 소제목 정량 수치, 능동형 서술어 비율 종합 진단
 """
 import sys
+import os
 import re
+import json
 
-AI_PATTERNS = [
-    (r"를 통해|을 통해", "번역투 (~를 통해) -> '~로', '~하여', 또는 구체적 액션 동사로 대체"),
-    (r"에 있어서|에 있어", "일본어/번역투 (~에 있어서) -> '~에서', '~할 때'로 간결화"),
-    (r"로 이어지는|으로 이어지는", "상투적 번역투 (~로 이어지는) -> 인과관계를 능동형 문장으로 분리"),
-    (r"중요성을 깨달았습니다|중요성을 알게 되었습니다", "전형적 AI 반성문 패턴 -> 구체적 학습 규칙이나 시스템 지침으로 수정"),
-    (r"발판이 되었습니다|교두보가 되었습니다|단초가 되었습니다", "구태의연한 상투어 -> 실제 후속 성과 및 정량 지표로 대체"),
-    (r"귀사", "범용 복사/붙여넣기 냄새 -> 정확한 회사명(KT, 우리은행 등) 명시"),
-    (r"뿐만 아니라", "기계적 대칭 병렬구조 -> 문장을 단문으로 쪼개거나 구체적 기술 나열"),
-    (r"성공적으로", "주관적 자평 -> 정량적 수치(정확도 %, 단축 시간 등)로 객관화"),
-    (r"다양한|많은|여러", "모호한 수식어 -> 구체적 개수/모수(13,000종, 2,000건 등)로 치환"),
-    (r"기여했습니다|이바지했습니다", "수동적 서술 -> '~을 구축했습니다', '~을 설계했습니다' 등 주도적 동사 사용"),
-    (r"열정을 가지고|최선을 다해", "감정적 서술 -> 엔지니어링 방법론과 문제해결 행동으로 대체"),
-    (r"배울 수 있었습니다", "수동적 학습 표현 -> '~역량을 내재화했습니다', '~노하우를 확립했습니다'로 강화")
-]
+DEFAULT_DICT_PATH = os.path.join(os.path.dirname(__file__), "..", "resources", "ai_ban_dictionary.json")
 
-def lint_text(text):
-    print("==================================================")
-    print("   AI 번역투 및 자소서 클리닉 린터 진단 결과")
-    print("==================================================")
+def load_rules(dict_path=DEFAULT_DICT_PATH):
+    if os.path.exists(dict_path):
+        try:
+            with open(dict_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return data.get("rules", []), data.get("categories", {})
+        except Exception as e:
+            print(f"[경고] 사전 파일 로드 실패: {e}")
+    return [], {}
+
+def lint_text(text, rules=None, categories=None):
+    if rules is None:
+        rules, categories = load_rules()
+        
+    print("=" * 65)
+    print("   im-not-ai 기반 공채 자기소개서 정밀 린터 진단 결과")
+    print("=" * 65)
     
     lines = [l.strip() for l in text.split("\n") if l.strip()]
     if not lines:
         print("텍스트가 비어 있습니다.")
-        return
+        return 0
         
-    # 1. 소제목 검사
-    first_line = lines[0]
-    has_subtitle = first_line.startswith("[") and "]" in first_line
-    print(f"1. 소제목 진단: {'[통과]' if has_subtitle else '[경고]'}")
+    # 1. 소제목 진단
+    first_subtitle_line = ""
+    for line in lines:
+        cleaned = line.lstrip("#").strip()
+        if cleaned.startswith("[") and "]" in cleaned:
+            first_subtitle_line = cleaned
+            break
+        
+    has_subtitle = bool(first_subtitle_line)
+    has_num_in_sub = bool(re.search(r"\d+", first_subtitle_line)) if has_subtitle else False
+    
+    print("\n1. 소제목 공식 검증:")
     if has_subtitle:
-        has_num = bool(re.search(r"\d+", first_line))
-        print(f"   - 소제목: {first_line}")
-        print(f"   - 정량 수치 포함 여부: {'포함됨 (우수)' if has_num else '수치 누락 (개선 권장)'}")
+        print(f"   - 소제목: {first_subtitle_line}")
+        print(f"   - 정량 수치/모수 포함: {'[PASS] 포함됨' if has_num_in_sub else '[FAIL] 수치 누락 (모수 추가 필요)'}")
     else:
-        print("   - 소제목([문제해결 행동 + 비교가능한 정량수치])이 첫 줄에 누락되었습니다.")
+        print("   - [FAIL] 소제목([문제해결 행동 + 비교가능한 정량수치]) 누락")
 
-    # 2. AI 패턴 검사
-    print("\n2. AI 클리셰 / 번역투 검출:")
-    detected_count = 0
-    for pattern, advice in AI_PATTERNS:
-        matches = re.findall(pattern, text)
-        if matches:
-            detected_count += len(matches)
-            print(f"   [감점 요인] '{matches[0]}' ({len(matches)}회 감지)")
-            print(f"     -> 권장 조치: {advice}")
+    # 2. im-not-ai 패턴 검사
+    print("\n2. AI 클리셰 및 번역투 검출 (im-not-ai 10대 카테고리):")
+    s1_violations = []
+    s2_violations = []
+    
+    for rule in rules:
+        rule_id = rule.get("id", "N/A")
+        cat = rule.get("category", "A")
+        cat_name = categories.get(cat, cat)
+        severity = rule.get("severity", "S2")
+        pattern_regex = rule.get("regex", "")
+        reason = rule.get("reason", "")
+        replacement = rule.get("replacement", "")
+        
+        if not pattern_regex:
+            continue
             
-    if detected_count == 0:
-        print("   [우수] 탐지된 AI 클리셰 및 번역투가 없습니다. (자연스러운 엔지니어 문체)")
+        matches = list(re.finditer(pattern_regex, text))
+        if matches:
+            violation_info = {
+                "id": rule_id,
+                "category": cat_name,
+                "severity": severity,
+                "count": len(matches),
+                "sample": matches[0].group(),
+                "reason": reason,
+                "replacement": replacement
+            }
+            if severity == "S1":
+                s1_violations.append(violation_info)
+            else:
+                s2_violations.append(violation_info)
+                
+    total_violations = len(s1_violations) + len(s2_violations)
+    if total_violations == 0:
+        print("   [우수] 탐지된 AI 클리셰 및 번역투 0건 (완벽한 엔지니어링 문체)")
     else:
-        print(f"\n   -> 총 {detected_count}건의 AI 패턴이 발견되었습니다. 수정을 권장합니다.")
+        if s1_violations:
+            print(f"   * S1 치명적 AI 클리셰 ({len(s1_violations)}건 감지 - 즉시 탈락 요인):")
+            for v in s1_violations:
+                print(f"     - [{v['id']}] '{v['sample']}' ({v['count']}회) -> {v['reason']}")
+                print(f"       -> 권장 조치: {v['replacement']}")
+        if s2_violations:
+            print(f"   * S2 번역투/문체 완곡 ({len(s2_violations)}건 감지):")
+            for v in s2_violations:
+                print(f"     - [{v['id']}] '{v['sample']}' ({v['count']}회) -> {v['reason']}")
+                print(f"       -> 권장 조치: {v['replacement']}")
 
-    # 3. 문장 종결 어미 점검 (능동형 vs 수동형)
-    passive_endings = len(re.findall(r"되었습니다|이루어졌습니다|보였습니다", text))
-    active_endings = len(re.findall(r"설계했습니다|구축했습니다|도출했습니다|단축했습니다|해결했습니다|확보했습니다", text))
-    print(f"\n3. 서술어 엔지니어링 주도성:")
-    print(f"   - 주도적 능동 동사: {active_endings}회")
-    print(f"   - 피동/수동 동사: {passive_endings}회")
-    print("==================================================")
+    # 3. 서술어 능동성 분석
+    passive_endings = len(re.findall(r"되었습니다|이루어졌습니다|보여집니다|생각됩니다", text))
+    active_endings = len(re.findall(r"설계했습니다|구축했습니다|도출했습니다|단축했습니다|해결했습니다|최적화했습니다|입증했습니다", text))
+    total_verbs = active_endings + passive_endings
+    active_ratio = (active_endings / total_verbs * 100) if total_verbs > 0 else 0
+    
+    print("\n3. 서술어 엔지니어링 주도성:")
+    print(f"   - 능동형 주도 동사: {active_endings}회")
+    print(f"   - 피동/수동형 동사: {passive_endings}회")
+    print(f"   - 능동 서술어 비율: {active_ratio:.1f}% ({'[PASS] 70% 이상' if active_ratio >= 70 else '[FAIL] 능동 전환 필요'})")
+
+    # 4. 종합 HEI (Human Engineering Index) 산출
+    score = 100
+    score -= len(s1_violations) * 15
+    score -= len(s2_violations) * 5
+    if not has_subtitle or not has_num_in_sub:
+        score -= 10
+    if active_ratio < 60:
+        score -= 10
+    score = max(0, min(100, score))
+    
+    print("\n" + "-" * 65)
+    print(f"   종합 판정: HEI(인간 엔지니어링 지수) = {score} / 100점")
+    if score >= 90:
+        print("   [합격권] 서류 통과 가능성 최우수 (AI 티 제로 및 능동 엔지니어링)")
+    elif score >= 75:
+        print("   [보통] 경미한 번역투 및 서술어 정제 필요")
+    else:
+        print("   [위험] S1 클리셰 다수 검출 또는 수동형 서술 과다 (재작성 권장)")
+    print("=" * 65)
+    return score
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        with open(sys.argv[1], "r", encoding="utf-8") as f:
+        file_path = sys.argv[1]
+        if not os.path.exists(file_path):
+            print(f"[오류] 파일을 찾을 수 없습니다: {file_path}")
+            sys.exit(1)
+        with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
         lint_text(content)
     else:
-        print("Usage: python ai_lint.py <file_path>")
+        print("Usage: python scripts/ai_lint.py <file_path>")
+
