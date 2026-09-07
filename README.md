@@ -1,5 +1,5 @@
-﻿# 🎯 SKALA Resume Clinic (`skala-resume-clinic`)
-> **SKALA 4기 취업캠프 기반 IT/SW/AI 공채 자기소개서 작성, 진단 및 실전 클리닉 Antigravity 스킬**
+﻿# 🎯 자기소개서 Skill
+> **공채 자기소개서 작성, 진단 및 실전 클리닉 Antigravity 스킬**
 
 [![Antigravity Skill](https://img.shields.io/badge/Antigravity-Skill-blue.svg)](https://github.com/google/antigravity)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -10,8 +10,8 @@
 
 ## 📌 개요 (Overview)
 
-`skala-resume-clinic`은 **Google Antigravity (AGY)** 환경에서 구동되는 공채 자기소개서 전문 진단 및 작성 에이전트 스킬입니다.  
-SKALA 4기 취업캠프의 현직 대기업/금융권 인사담당자 평가 루브릭(5분 스캔 원칙), 70여 개 AI 번역투 및 상투어 배제 규칙(`im-not-ai`), 그리고 STAR 엔지니어링 방법론을 결합하여 서류 합격률을 극대화합니다.
+`해당 GIT`은 **Google Antigravity (AGY)** 환경에서 구동되는 공채 자기소개서 전문 진단 및 작성 에이전트 스킬입니다.  
+70여 개 AI 번역투 및 상투어 배제 규칙(`im-not-ai`), 그리고 STAR 엔지니어링 방법론을 결합하여 서류 합격률을 극대화합니다.
 
 ---
 
