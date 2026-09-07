@@ -1,139 +1,107 @@
 {
   "personal": {
-    "name": "안성민",
-    "birth": "2001.02.15",
-    "phone": "010-****-5134",
+    "name": "안성민 (Seongmin An)",
+    "phone": "+82 10-2878-5134",
     "email": "tjdals2299@gmail.com",
-    "address": "전북특별자치도 전주시 덕진구",
-    "military": "군필 (육군 병장 만기전역)",
-    "language": "어학성적 없음 (어학 무관 직무 지원)"
+    "location": "Gwangju, South Korea",
+    "github": "github.com/rntqkdl",
+    "huggingface": "huggingface.co/ANSEONGMIN",
+    "military": "대한민국 육군 제15보병사단 수색대대 수색병 병장 만기전역 (2024.02 - 2025.08)"
   },
   "education": {
-    "university": "전북대학교",
-    "major": "IT융합기전공학과",
-    "dual_major": "IAB융합전공",
-    "status": "졸업예정 (2019.03 ~ 2027.02)",
-    "gpa": "3.5",
-    "max_gpa": "4.5"
+    "university": "전북대학교 (Jeonju, South Korea)",
+    "period": "2019.03 - 2027.02 (졸업 예정)",
+    "major": "IT융합메카트로닉스공학과 (주전공)",
+    "dual_major": "IAB융합전공 (복수전공, 인공지능 및 빅데이터)",
+    "credits": 133,
+    "gpa": "3.40 / 4.50",
+    "major_gpa": "3.46 / 4.50",
+    "senior_gpa": "4.42 / 4.50",
+    "high_school": "전북하이텍고등학교 (전기제어과 졸업, 2016.03 - 2019.02)"
   },
   "certifications": [
-    {
-      "name": "AI-900 (Azure AI Fundamentals)",
-      "issuer": "Microsoft",
-      "status": "취득완료"
-    },
-    {
-      "name": "DP-900 (Azure Data Fundamentals)",
-      "issuer": "Microsoft",
-      "status": "취득완료"
-    },
-    {
-      "name": "ADsP (데이터분석 준전문가)",
-      "issuer": "한국데이터산업진흥원",
-      "status": "취득완료"
-    },
-    {
-      "name": "SQLD (SQL 개발자)",
-      "issuer": "한국데이터산업진흥원",
-      "status": "취득예정"
-    }
+    { "name": "데이터분석준전문가 (ADsP)", "issuer": "한국데이터산업진흥원", "date": "2026.06.05" },
+    { "name": "AI-900: Azure AI Fundamentals", "issuer": "Microsoft", "date": "2023.08.06", "id": "Gww3-4wBm" },
+    { "name": "DP-900: Azure Data Fundamentals", "issuer": "Microsoft", "date": "2023.08.13", "id": "63KX-DwWR" },
+    { "name": "전기기능사", "issuer": "한국산업인력공단", "date": "2018.07.06" },
+    { "name": "승강기기능사", "issuer": "한국산업인력공단", "date": "2017.09.29" }
   ],
-  "awards": [
-    {
-      "year": "2025.12",
-      "name": "SW 프로젝트 경진대회 대상 (정보통신기획평가원장상)",
-      "org": "고려대학교 지능정보 SW아카데미 / IITP",
-      "project": "EpiText"
-    },
-    {
-      "year": "2026.02",
-      "name": "DACON 피싱/스캠 예방 서비스 개발 경진대회 우수상",
-      "org": "데이콘 (DACON) / 데이터 유니버스",
-      "project": "Smishing Forecast"
-    },
-    {
-      "year": "2024.01",
-      "name": "AWS DeepRacer 챔피언십 우수상",
-      "org": "전북대학교 / AWS",
-      "project": "AWS DeepRacer 자율주행 강화학습 최적화"
-    },
-    {
-      "year": "2023.06",
-      "name": "캡스톤 디자인 경진대회 은상",
-      "org": "전북대학교 공과대학",
-      "project": "Safe Drain Lock (IoT 수영장 배수구 사고방지 시스템)"
-    },
-    {
-      "year": "2023.08",
-      "name": "모바일 앱 개발 해커톤 우수상",
-      "org": "전남대학교",
-      "project": "건설 일용직 구인구직 매칭 플랫폼"
-    }
+  "skills": [
+    "Python", "PyTorch", "Swin Transformer V2", "SikuRoBERTa", "Hugging Face", "SQL", "JavaScript", "C / C++",
+    "Git", "Docker", "Kubernetes", "Spring Boot", "Vue.js", "FastAPI", "Flask", "OpenCV", "n8n",
+    "Supabase (Vector DB / Qdrant)", "AWS (Lambda, SQS, API Gateway)", "Azure (AI, Data)", "OhMyApp", "GeoPandas"
   ],
   "projects": {
     "epitext": {
-      "name": "EpiText: 딥러닝 멀티모달 기반 훼손 탁본 복원 및 문맥 해석 시스템",
-      "period": "2025.08 ~ 2025.12",
-      "role": "PM 및 Vision/데이터 전처리 엔지니어링 (4인)",
-      "tech_stack": [
-        "Python",
-        "PyTorch",
-        "Swin Transformer V2",
-        "SikuRoBERTa",
-        "Gemini API",
-        "OpenCV",
-        "EasyOCR",
-        "FastAPI"
-      ],
-      "metrics": {
-        "dataset_size": "원천 14,881개 이미지 중 9,970개 고품질 데이터셋 정제 구축",
-        "imbalance_ratio": "13,000종 한자 클래스, 최대 1:907 불균형 극복",
-        "top1_acc": "96.63%",
-        "top5_acc": "99.38%",
-        "f1_score": "82.4%"
-      }
+      "title": "EpiText: 딥러닝 멀티모달 기반 훼손 탁본 복원 및 문맥 해석 시스템",
+      "period": "2025.08 - 2025.12",
+      "role": "고려대학교 SW 아카데미 7기 / PM (4인)",
+      "awards": "정보통신기획평가원장상(대상), KICS 및 KIIT 학술지 논문 투고 완료",
+      "details": [
+        "13,974종 한자 클래스의 극심한 롱테일 분포(상위 20자가 전체 30% 차지, 희귀 한자 다수) 문제를 해결하기 위해, 빈도수 제곱근 역수 가중치 기반 커스텀 손실 함수(Custom Weighted Loss)를 직접 설계하여 희귀 한자 인식률을 균등화",
+        "Backbone(3e-5)과 Head(3e-4)에 2-Tier 차등 학습률을 적용하고 Color Jitter(±35%) 증강을 결합하여, Effective Batch Size 576 환경에서 Epoch 2만에 검증 정확도 41%p가 급상승하는 안정적 조기 수렴을 달성",
+        "Grayscale 변환, Otsu 이진화, 자동 극성 감지, 7대 품질 지표 IQR 이상치 분석을 거쳐 13,966개 원천 탁본 이미지에서 최종 9,970개 고품질 데이터셋을 정제",
+        "Stratified Shuffle Split을 적용하여 Train/Val 간 클래스 분포 불일치를 해소하고, 최종 Top-1 정확도 96.63%, Top-5 99.38%를 달성"
+      ]
     },
     "smishing": {
-      "name": "Smishing Forecast: 자가 진화형 스미싱 방어 AI 시스템",
-      "period": "2026.01 ~ 2026.02",
-      "role": "Data / NLP 파이프라인 개발 (4인)",
-      "tech_stack": [
-        "Python",
-        "RoBERTa",
-        "Google News RSS",
-        "Naver API",
-        "JSONL"
-      ],
-      "metrics": {
-        "f1_improvement": "0.67 → 0.95로 대폭 개선"
-      }
+      "title": "Smishing Forecast: 자가 진화형 스미싱 방어 AI 시스템",
+      "period": "2026.01 - 2026.02",
+      "role": "데이터 유니버스 / DACON 피싱 및 스캠 예방 서비스 개발 경진대회 | 팀 (4인)",
+      "awards": "우수상",
+      "details": [
+        "Google News RSS 및 Naver API에서 수집된 비정형 텍스트의 광고 제거, 특수문자 정제, 불용어 처리, JSONL 구조화까지 이어지는 자동 정제 파이프라인을 구축",
+        "GPT-4o(공격 생성)와 KLUE-RoBERTa(방어 탐지)의 적대적 공생 파이프라인을 구축하여 개념 드리프트를 해결하고, F1-Score 0.67 -> 0.95(최대 1.00), 변형 스미싱 탐지율 91.5% 달성"
+      ]
     },
-    "n8n_agent": {
-      "name": "n8n 기반 개인화 취업 컨설팅 에이전트",
-      "period": "2026.01.13 ~ 2026.01.16",
-      "role": "팀장 및 자동화 워크플로우 설계 및 구현",
-      "tech_stack": [
-        "n8n",
-        "Apify",
-        "Azure OpenAI",
-        "Supabase Vector Store (Qdrant)",
-        "JavaScript"
+    "cloud_rag": {
+      "title": "클라우드 네이티브 MSA 및 RAG 지식 검색 플랫폼",
+      "period": "2026.07 - 2026.08",
+      "role": "엔지니어링 (컨테이너 가상화 및 벡터 지식 검색 시스템 구축)",
+      "details": [
+        "Spring Boot 및 Python 마이크로서비스를 Dockerfile 멀티스테이지 빌드로 경량화하고, Docker Compose 및 Kubernetes(K8s) 클러스터 환경에서 컨테이너 배포 및 오케스트레이션 파이프라인 구축",
+        "사내 기술 문서와 실습 가이드를 청킹하여 Vector DB(Qdrant, Chroma)에 인덱싱하고, 엔지니어링 질의응답을 지원하는 RAG 지식 베이스 검색 시스템 구현"
+      ]
+    },
+    "on_library": {
+      "title": "On Library: 공공데이터 기반 이동식 도서관 운영 의사결정 지원 시스템 (SDSS)",
+      "period": "2026.05 - 2026.07",
+      "role": "공공데이터 융합 및 TSP 도로망 노선 최적화 | PM (4인)",
+      "details": [
+        "GeoPandas로 다차원 공공데이터 좌표계 일원화 및 AHP 4대 지표 가중치 평가 모델 수립",
+        "네이버 지도 Directions API 도로망 기반 외판원 순회(TSP) 알고리즘 결합 대시보드로 총 주행시간 28.4% 절감 (일 182분 -> 130분)"
       ]
     },
     "safe_drain_lock": {
-      "name": "Safe Drain Lock: 수영장 배수구 끼임 사고 방지 자동 제어 시스템",
-      "period": "2023.03 ~ 2023.06",
-      "role": "임베디드 SW 개발 및 센서 데이터 분석 (5인)",
-      "tech_stack": [
-        "Arduino",
-        "Python",
-        "Flow Sensor",
-        "Solenoid Valve"
-      ],
-      "metrics": {
-        "threshold": "정상 유량(2,000L/h)과 이상 유량(0~380L/h) 분석으로 임계값 500L/h 도출",
-        "response_time": "이상 감지 시 0.1초 내 워터펌프 역회전 제어"
-      }
+      "title": "Safe Drain Lock: 수영장 배수구 끼임 사고 방지 자동 제어 시스템",
+      "period": "2023.03 - 2023.06",
+      "role": "전북대학교 LINC 3.0 사업단 / 임베디드 SW 개발 (5인)",
+      "awards": "은상 (LINC 3.0사업단장상)",
+      "details": [
+        "Arduino 기반 4단계 연쇄 제어 흐름 설계 (센서 -> 밸브 차단 -> 펌프 역회전 -> 경고)",
+        "Python 신호 필터링과 정상(2,000L/h) vs 사고(0~380L/h) 실험 데이터 분석으로 최적 임계값(500L/h) 도출 및 0.1초 내 모터 역회전 제어 구현"
+      ]
+    },
+    "deepracer": {
+      "title": "AWS DeepRacer: 강화학습 기반 자율주행 레이싱 최적화",
+      "period": "2024.01.08 - 2024.01.12",
+      "role": "AWS DeepRacer 챔피언십 | 우수상 (종합 3위)",
+      "details": [
+        "정량적 데이터 근거 기반 보상 함수 재설계로 랩타임 20.1% 개선(32.4초->25.9초), 이탈 21.9% 감소, 종합 3위 달성"
+      ]
+    }
+  },
+  "collaboration_and_values": {
+    "collaboration_lesson": {
+      "context": "AWS DeepRacer에서 역할 경계 모호로 팀원 2명이 동일 파라미터 튜닝을 중복 수행하여 1주일 실험 및 6시간 학습 시간 낭비 실패 경험",
+      "principle": "좋은 관계가 좋은 성과를 보장하지 않는다. 명확한 시스템이 성과를 보장한다.",
+      "action": "EpiText PM 수행 시 첫 주에 Vision, NLP, Backend, Frontend 영역별 담당 업무 문서화 및 매주 [실험 내용 -> 수치 결과 -> 다음 주 계획] 정기 리뷰 도입",
+      "result": "5개월간 작업 중복 0건 달성, 백엔드 41 커밋, 프론트엔드 52 커밋 무충돌 관리로 대상(IITP 원장상) 수상"
+    },
+    "work_values": {
+      "principle": "가상 데이터와 현업 데이터의 이질감을 직시하고, 보이지 않는 결함과 노이즈를 정량 데이터로 끝까지 통제하는 엔지니어링 원칙",
+      "origin": "IT융합메카트로닉스공학 및 Safe Drain Lock IoT 센서 프로젝트에서 물리 센서 노이즈가 시스템 셧다운을 유발하는 현상 경험 -> 임시방편 패치 거부 및 반복 측정을 통한 최적 임계값(500L/h) 도출과 0.1초 즉시 제어 구현",
+      "application": "EpiText 7대 지표 IQR 이상치 정제 및 1:907 불균형 손실함수 수식 설계, DeepRacer 정량적 실험 관리"
     }
   }
 }
