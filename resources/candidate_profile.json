@@ -20,16 +20,57 @@
     "high_school": "전북하이텍고등학교 (전기제어과 졸업, 2016.03 - 2019.02)"
   },
   "certifications": [
-    { "name": "데이터분석준전문가 (ADsP)", "issuer": "한국데이터산업진흥원", "date": "2026.06.05" },
-    { "name": "AI-900: Azure AI Fundamentals", "issuer": "Microsoft", "date": "2023.08.06", "id": "Gww3-4wBm" },
-    { "name": "DP-900: Azure Data Fundamentals", "issuer": "Microsoft", "date": "2023.08.13", "id": "63KX-DwWR" },
-    { "name": "전기기능사", "issuer": "한국산업인력공단", "date": "2018.07.06" },
-    { "name": "승강기기능사", "issuer": "한국산업인력공단", "date": "2017.09.29" }
+    {
+      "name": "데이터분석준전문가 (ADsP)",
+      "issuer": "한국데이터산업진흥원",
+      "date": "2026.06.05"
+    },
+    {
+      "name": "AI-900: Azure AI Fundamentals",
+      "issuer": "Microsoft",
+      "date": "2023.08.06",
+      "id": "Gww3-4wBm"
+    },
+    {
+      "name": "DP-900: Azure Data Fundamentals",
+      "issuer": "Microsoft",
+      "date": "2023.08.13",
+      "id": "63KX-DwWR"
+    },
+    {
+      "name": "전기기능사",
+      "issuer": "한국산업인력공단",
+      "date": "2018.07.06"
+    },
+    {
+      "name": "승강기기능사",
+      "issuer": "한국산업인력공단",
+      "date": "2017.09.29"
+    }
   ],
   "skills": [
-    "Python", "PyTorch", "Swin Transformer V2", "SikuRoBERTa", "Hugging Face", "SQL", "JavaScript", "C / C++",
-    "Git", "Docker", "Kubernetes", "Spring Boot", "Vue.js", "FastAPI", "Flask", "OpenCV", "n8n",
-    "Supabase (Vector DB / Qdrant)", "AWS (Lambda, SQS, API Gateway)", "Azure (AI, Data)", "OhMyApp", "GeoPandas"
+    "Python",
+    "PyTorch",
+    "Swin Transformer V2",
+    "SikuRoBERTa",
+    "Hugging Face",
+    "SQL",
+    "JavaScript",
+    "C / C++",
+    "Git",
+    "Docker",
+    "Kubernetes",
+    "Spring Boot",
+    "Vue.js",
+    "FastAPI",
+    "Flask",
+    "OpenCV",
+    "n8n",
+    "Supabase (Vector DB / Qdrant)",
+    "AWS (Lambda, SQS, API Gateway)",
+    "Azure (AI, Data)",
+    "OhMyApp",
+    "GeoPandas"
   ],
   "projects": {
     "epitext": {
@@ -103,5 +144,37 @@
       "origin": "IT융합메카트로닉스공학 및 Safe Drain Lock IoT 센서 프로젝트에서 물리 센서 노이즈가 시스템 셧다운을 유발하는 현상 경험 -> 임시방편 패치 거부 및 반복 측정을 통한 최적 임계값(500L/h) 도출과 0.1초 즉시 제어 구현",
       "application": "EpiText 7대 지표 IQR 이상치 정제 및 1:907 불균형 손실함수 수식 설계, DeepRacer 정량적 실험 관리"
     }
-  }
+  },
+  "awards": [
+    {
+      "name": "정보통신기획평가원장상 (대상, 최종 1위)",
+      "date": "2025.12.18",
+      "issuer": "과학기술정보통신부 / 정보통신기획평가원(IITP)",
+      "details": "고려대학교 지능정보 SW아카데미 프로젝트 경진대회 30개 팀 중 1위 대상 (EpiText 시스템)"
+    },
+    {
+      "name": "DACON 피싱·스캠 예방 AI 서비스 개발 경진대회 우수상 (2위)",
+      "date": "2026.02.13",
+      "issuer": "데이터유니버스 / DACON",
+      "details": "비정형 텍스트 4단계 자동 정제 및 적대적 생성-탐지 방어 AI 모델 개발 (전국 우수상)"
+    },
+    {
+      "name": "LINC 3.0 캡스톤디자인 경진대회 은상",
+      "date": "2023.06.20",
+      "issuer": "전북대학교 LINC 3.0 사업단",
+      "details": "유량 센서 시계열 데이터 분석 기반 배수구 끼임 사고 방지 자동 제어 시스템(Safe Drain Lock) 개발"
+    },
+    {
+      "name": "AWS DeepRacer 챔피언십 우수상 (종합 3위)",
+      "date": "2024.01.12",
+      "issuer": "DSC 공유대학 / AWS",
+      "details": "강화학습 기반 보상 함수 최적화 및 랩타임 20.1% 단축, 종합 3위 달성"
+    },
+    {
+      "name": "모바일 앱 개발 해커톤 캠프 우수상",
+      "date": "2023.08.30",
+      "issuer": "DSC 공유대학 (전남대학교)",
+      "details": "QR 결제 기반 팝업스토어 모바일 웹 플랫폼 개발 및 실시간 거래 데이터 연동 서비스 구현"
+    }
+  ]
 }
